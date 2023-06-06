@@ -54,5 +54,3 @@ const ProductCard = ({ data, pagination }) => {
 };
 
 export default ProductCard;
-
-// const p = attributes;

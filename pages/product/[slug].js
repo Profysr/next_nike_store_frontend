@@ -334,7 +334,19 @@ const ProductDetails = ({ product, products }) => {
   const p = product?.data?.[0]?.attributes;
 
   const notify = () => {
-    toast.success("Success. Check your cart!", {
+    toast.success("Successfully added, Check your cart ✔", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+  const wishlistUpdate = () => {
+    toast.success("We appreciated your wish ❤", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -351,7 +363,10 @@ const ProductDetails = ({ product, products }) => {
     <div className="w-full md:py-20">
       <ToastContainer />
       <Wrapper>
-        <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
+        <div
+          id="topView"
+          className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]"
+        >
           {/* left column start */}
           <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
             <ProductDetailsCarousel images={p.image.data} />
@@ -359,7 +374,7 @@ const ProductDetails = ({ product, products }) => {
           {/* left column end */}
 
           {/* right column start */}
-          <div id="topView" className="flex-[1] py-3">
+          <div className="flex-[1] py-3">
             {/* PRODUCT TITLE */}
             <div className="text-[34px] font-semibold mb-2 leading-tight">
               {p.name}
@@ -462,7 +477,7 @@ const ProductDetails = ({ product, products }) => {
                     })
                   );
                   document.getElementById("topView").scrollIntoView({
-                    block: "center",
+                    block: "start",
                     behavior: "smooth",
                   });
                   notify();
@@ -494,6 +509,11 @@ const ProductDetails = ({ product, products }) => {
                       oneQuantityPrice: p.price,
                     })
                   );
+                  document.getElementById("topView").scrollIntoView({
+                    block: "start",
+                    behavior: "smooth",
+                  });
+                  wishlistUpdate();
                 }
               }}
             >

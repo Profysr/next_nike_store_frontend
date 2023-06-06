@@ -1,5 +1,5 @@
 // links
-import React from "react";
+import React, { useState } from "react";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 // pages
@@ -37,11 +37,10 @@ const RelatedProduct = ({ products, pagination, title }) => {
           containerClass="mx-[10px]"
           itemClass="pb-[40px] px-[10px]"
           autoPlaySpeed={3000}
-          keyBoardControl={true}
           infinite={true}
           autoPlay={true}
           removeArrowOnDeviceType={["tablet", "mobile"]}
-          focusOnSelect={true}
+          pauseOnHover={true}
         >
           {pagination
             ? pagination.map((p) => (
@@ -53,5 +52,4 @@ const RelatedProduct = ({ products, pagination, title }) => {
     </div>
   );
 };
-
 export default RelatedProduct;
