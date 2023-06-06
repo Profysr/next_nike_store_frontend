@@ -140,7 +140,35 @@ const ProductDetails = ({ product, products }) => {
             </div>
             {/* PRODUCT SIZE RANGE END */}
 
-            {/* ADD TO CART BUTTON START */}
+            {/* Add to cart button starts  */}
+            <button
+              className="rounded-full w-full py-4 bg-black text-white text-lg font-medium mb-3 transition-transform duration-200 active:scale-95 hover:opacity-75"
+              onClick={() => {
+                if (!selectedSize) {
+                  setShowError(true);
+                  document
+                    .getElementById("sizeGrid")
+                    .scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                  dispatch(
+                    addToCart({
+                      ...singleProduct?.data?.[0],
+                      selectedSize,
+                      oneQuantityPrice: p?.price,
+                    })
+                  );
+                  notify();
+                  document.getElementById("topView").scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
+            >
+              Add to Cart
+            </button>
+            {/* Add to cart button ends  */}
+            {/* ADD TO CART BUTTON START
             {selectedSize ? (
               <button
                 className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
@@ -194,30 +222,7 @@ const ProductDetails = ({ product, products }) => {
               >
                 Add to Cart
               </button>
-            )}
-            {/* <button
-              className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
-              onClick={() => {
-                if (!selectedSize) {
-                  setShowError(true);
-                  document.getElementById("sizesGrid").scrollIntoView({
-                    block: "center",
-                    behavior: "smooth",
-                  });
-                } else {
-                  dispatch(
-                    addToCart({
-                      ...product?.data?.[0],
-                      selectedSize,
-                      oneQuantityPrice: p.price,
-                    })
-                  );
-                  notify();
-                }
-              }}
-            >
-              Add to Cart
-            </button> */}
+            )} */}
             {/* ADD TO CART BUTTON END */}
 
             {/* WHISHLIST BUTTON START */}
