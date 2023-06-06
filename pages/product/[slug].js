@@ -9,6 +9,7 @@ import { discountPercentage } from "@/utils/helper";
 import ReactMarkdown from "react-markdown";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "@/store/cartSlice";
+import { NumericFormat } from "react-number-format";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,7 +48,7 @@ const ProductDetails = ({ product, products }) => {
           {/* left column end */}
 
           {/* right column start */}
-          <div className="flex-[1] py-3">
+          <div id="topView" className="flex-[1] py-3">
             {/* PRODUCT TITLE */}
             <div className="text-[34px] font-semibold mb-2 leading-tight">
               {p.name}
@@ -58,11 +59,22 @@ const ProductDetails = ({ product, products }) => {
 
             {/* PRODUCT PRICE */}
             <div className="flex items-center">
-              <p className="mr-2 text-lg font-semibold">Rs : {p.price}</p>
+              <p className="mr-2 text-lg font-semibold">
+                <NumericFormat
+                  value={p?.price}
+                  displayType="text"
+                  thousandSeparator=","
+                  prefix="Rs: "
+                />
+              </p>
               {p.original_price && (
                 <>
                   <p className="text-base  font-medium line-through">
-                    {p.original_price}
+                    <NumericFormat
+                      value={p.original_price}
+                      displayType="text"
+                      thousandSeparator=","
+                    />
                   </p>
                   <p className="ml-auto text-base font-medium text-green-500">
                     {discountPercentage(p.original_price, p.price)}% off
@@ -147,6 +159,11 @@ const ProductDetails = ({ product, products }) => {
                         oneQuantityPrice: p.price,
                       })
                     );
+                    document.getElementById("topView").scrollIntoView({
+                      behavior: "smooth",
+                      block: "center",
+                    });
+
                     notify();
                   }
                 }}

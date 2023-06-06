@@ -24,7 +24,7 @@ const Header = () => {
 
   const controlNavbar = () => {
     if (window.scrollY > 200) {
-      if (window.scrollY > lastScrollY && !mobileMenu) {
+      if (window.scrollY > lastScrollY) {
         setShow("-translate-y-[80px]");
       } else {
         setShow("shadow-sm");

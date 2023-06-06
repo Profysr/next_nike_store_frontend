@@ -36,15 +36,17 @@ const RelatedProduct = ({ products, pagination, title }) => {
           responsive={responsive}
           containerClass="mx-[10px]"
           itemClass="pb-[40px] px-[10px]"
-          autoPlaySpeed={2000}
+          autoPlaySpeed={3000}
           keyBoardControl={true}
           infinite={true}
           autoPlay={true}
-          removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
           focusOnSelect={true}
         >
           {pagination
-            ? pagination.map((p) => <ProductCard key={p?.id} data={p} />)
+            ? pagination.map((p) => (
+                <ProductCard key={p?.id} data={p} pagination={pagination} />
+              ))
             : products?.data?.map((p) => <ProductCard key={p?.id} data={p} />)}
         </Carousel>
       </Wrapper>

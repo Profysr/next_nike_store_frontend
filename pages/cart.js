@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { makePaymentRequest } from "@/utils/api";
 import { loadStripe } from "@stripe/stripe-js";
 import EmptyCart from "@/components/EmptyCart";
+import { NumericFormat } from "react-number-format";
+
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
@@ -68,7 +70,12 @@ const Cart = () => {
                       Subtotal
                     </div>
                     <div className="text-md md:text-lg font-medium text-black">
-                      Rs: {subTotal}
+                      <NumericFormat
+                        value={subTotal}
+                        displayType="text"
+                        thousandSeparator=","
+                        prefix="Rs: "
+                      />
                     </div>
                   </div>
                   <div className="text-sm md:text-md py-5 border-t mt-5">

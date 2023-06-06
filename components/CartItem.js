@@ -3,6 +3,8 @@ import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { updateCart, removeFromCart } from "@/store/cartSlice";
 import { useDispatch } from "react-redux";
+import { NumericFormat } from "react-number-format";
+
 const CartItem = ({ data }) => {
   const p = data.attributes;
 
@@ -44,7 +46,12 @@ const CartItem = ({ data }) => {
 
           {/* PRODUCT PRICE */}
           <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
-            Rs : {p.price}
+            <NumericFormat
+              value={p.price}
+              displayType="text"
+              thousandSeparator=","
+              prefix="Rs: "
+            />
           </div>
         </div>
 
