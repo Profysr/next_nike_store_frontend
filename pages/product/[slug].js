@@ -344,7 +344,8 @@ const ProductDetails = ({ product, products }) => {
       theme: "dark",
     });
   };
-
+  //   // WISHLIST ICON STATE
+  const [wishIcon, setWishIcon] = useState(false);
   return (
     <div className="w-full md:py-20">
       <ToastContainer />
@@ -472,9 +473,35 @@ const ProductDetails = ({ product, products }) => {
             {/* ADD TO CART BUTTON END */}
 
             {/* WHISHLIST BUTTON START */}
-            <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
+            <button
+              className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10"
+              onMouseEnter={() => setWishIcon(true)}
+              onMouseLeave={() => setWishIcon(false)}
+              id="wishListBtn"
+              onClick={() => {
+                if (!selectedSize) {
+                  setShowError(true);
+                  document.getElementById("sizesGrid").scrollIntoView({
+                    block: "center",
+                    behavior: "smooth",
+                  });
+                } else {
+                  dispatch(
+                    addToFavourite({
+                      ...product?.data?.[0],
+                      selectedSize,
+                      oneQuantityPrice: p.price,
+                    })
+                  );
+                }
+              }}
+            >
               Whishlist
-              <IoMdHeartEmpty size={20} />
+              {wishIcon ? (
+                <IoMdHeart size={30} />
+              ) : (
+                <IoMdHeartEmpty size={30} />
+              )}
             </button>
             {/* WHISHLIST BUTTON END */}
 
