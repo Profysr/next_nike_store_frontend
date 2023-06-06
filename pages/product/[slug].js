@@ -141,7 +141,7 @@ const ProductDetails = ({ product, products }) => {
             {/* PRODUCT SIZE RANGE END */}
 
             {/* Add to cart button starts  */}
-            <button
+            {/* <button
               className="rounded-full w-full py-4 bg-black text-white text-lg font-medium mb-3 transition-transform duration-200 active:scale-95 hover:opacity-75"
               onClick={() => {
                 if (!selectedSize) {
@@ -166,9 +166,9 @@ const ProductDetails = ({ product, products }) => {
               }}
             >
               Add to Cart
-            </button>
+            </button> */}
             {/* Add to cart button ends  */}
-            {/* ADD TO CART BUTTON START
+            {/* ADD TO CART BUTTON START */}
             {selectedSize ? (
               <button
                 className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
@@ -216,13 +216,17 @@ const ProductDetails = ({ product, products }) => {
                         oneQuantityPrice: p.price,
                       })
                     );
+                    document.getElementById("topView").scrollIntoView({
+                      behavior: "smooth",
+                      block: "center",
+                    });
                     notify();
                   }
                 }}
               >
                 Add to Cart
               </button>
-            )} */}
+            )}
             {/* ADD TO CART BUTTON END */}
 
             {/* WHISHLIST BUTTON START */}
@@ -250,7 +254,6 @@ const ProductDetails = ({ product, products }) => {
               }}
             >
               Whishlist
-              {/* <IoMdHeartEmpty size={20} /> */}
               {wishIcon ? (
                 <IoMdHeart size={30} />
               ) : (
