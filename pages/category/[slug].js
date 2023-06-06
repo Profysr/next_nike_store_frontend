@@ -23,7 +23,7 @@ const Category = ({ category, products, slug }) => {
   );
 
   return (
-    <div className="w-full md:py-20 relative">
+    <div className="w-full md:py-20">
       <Wrapper>
         <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
@@ -65,9 +65,11 @@ const Category = ({ category, products, slug }) => {
         )}
         {/* PAGINATION BUTTONS END */}
         {isLoading && (
-          <div className="absolute top-0 left-0 w-full h-full bg-white/[0.5] flex flex-col gap-5 justify-center items-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/[0.5] flex flex-col gap-5 justify-center items-center">
             <img src="/logo.svg" width={150} />
-            <span className="text-2xl font-medium">Loading...</span>
+            <span className="text-2xl font-medium animate-bounce">
+              Loading...
+            </span>
           </div>
         )}
       </Wrapper>

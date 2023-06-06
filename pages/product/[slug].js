@@ -58,13 +58,11 @@ const ProductDetails = ({ product, products }) => {
 
             {/* PRODUCT PRICE */}
             <div className="flex items-center">
-              <p className="mr-2 text-lg font-semibold">
-                MRP : &#8377;{p.price}
-              </p>
+              <p className="mr-2 text-lg font-semibold">Rs : {p.price}</p>
               {p.original_price && (
                 <>
                   <p className="text-base  font-medium line-through">
-                    &#8377;{p.original_price}
+                    {p.original_price}
                   </p>
                   <p className="ml-auto text-base font-medium text-green-500">
                     {discountPercentage(p.original_price, p.price)}% off
@@ -131,7 +129,56 @@ const ProductDetails = ({ product, products }) => {
             {/* PRODUCT SIZE RANGE END */}
 
             {/* ADD TO CART BUTTON START */}
-            <button
+            {selectedSize ? (
+              <button
+                className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                onClick={() => {
+                  if (!selectedSize) {
+                    setShowError(true);
+                    document.getElementById("sizesGrid").scrollIntoView({
+                      block: "center",
+                      behavior: "smooth",
+                    });
+                  } else {
+                    dispatch(
+                      addToCart({
+                        ...product?.data?.[0],
+                        selectedSize,
+                        oneQuantityPrice: p.price,
+                      })
+                    );
+                    notify();
+                  }
+                }}
+              >
+                Add to Cart
+              </button>
+            ) : (
+              <button
+                className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                onClick={() => {
+                  if (!selectedSize) {
+                    setShowError(true);
+                    document.getElementById("sizesGrid").scrollIntoView({
+                      block: "center",
+                      behavior: "smooth",
+                    });
+                  } else {
+                    dispatch(
+                      addToCart({
+                        ...product?.data?.[0],
+                        selectedSize,
+                        oneQuantityPrice: p.price,
+                      })
+                    );
+                    notify();
+                  }
+                }}
+              >
+                Add to Cart
+              </button>
+            )}
+            {/* <button
               className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
               onClick={() => {
                 if (!selectedSize) {
@@ -153,7 +200,7 @@ const ProductDetails = ({ product, products }) => {
               }}
             >
               Add to Cart
-            </button>
+            </button> */}
             {/* ADD TO CART BUTTON END */}
 
             {/* WHISHLIST BUTTON START */}

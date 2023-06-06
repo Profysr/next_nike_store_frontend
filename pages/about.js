@@ -12,7 +12,7 @@ const about = () => {
         width={1100}
         height={500}
         src="/wrapper.jpg"
-        class="object-cover object-center w-full h-full"
+        class="object-cover object-center w-full h-full mt-4"
       />
       <Wrapper>
         <section class="body-font">
