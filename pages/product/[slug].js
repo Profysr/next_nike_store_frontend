@@ -460,7 +460,7 @@ const ProductDetails = ({ product, products }) => {
                     })
                   );
                   document.getElementById("topView").scrollIntoView({
-                    block: "start",
+                    block: "center",
                     behavior: "smooth",
                   });
                   notify();
