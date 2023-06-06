@@ -325,6 +325,7 @@ import { NumericFormat } from "react-number-format";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { addToFavourite } from "@/store/wishSlice";
 
 const ProductDetails = ({ product, products }) => {
   const [selectedSize, setSelectedSize] = useState();
