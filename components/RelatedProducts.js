@@ -41,6 +41,7 @@ const RelatedProduct = ({ products, pagination, title }) => {
           autoPlay={true}
           removeArrowOnDeviceType={["tablet", "mobile"]}
           pauseOnHover={true}
+          focusOnSelect={true}
         >
           {pagination
             ? pagination.map((p) => (

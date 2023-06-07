@@ -17,8 +17,8 @@ const ContactForm = () => {
   return (
     <div className="my-4 w-full flex justify-center items-center">
       <form
-        // action="https://formspree.io/f/mpzegqzw"
-        action=""
+        action="https://formspree.io/f/mpzegqzw"
+        // action=""
         method="POST"
         className="max-w-[360px] lg:max-w-[460px] px-5 bg-white flex flex-col w-full mt-8"
       >
